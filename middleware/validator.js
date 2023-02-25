@@ -16,12 +16,14 @@ const validateUser = (req,res,next)=>{
 }
 
 const validateChannel = (req,res,next)=>{
-    const channelObj={
+    channelUsers = req.body.channelUsers;
+    console.log(">>>..body",req.body.Id)
+    const channelObj = {
         channelName : req.body.channelName,
-        channelUsers : req.body.channelUsers,
-        userID:req.body.userID,
-        name:req.body.name,
-        email:req.body.email,
+        channelUsers : req.body.channelUsers,     //creating channel with users
+        userID:channelUsers.userID,
+        name:channelUsers.name,
+        email:channelUsers.email
     }
     if (!channelObj.channelName ){
         return res.status(403).send({
@@ -33,7 +35,7 @@ const validateChannel = (req,res,next)=>{
             message: " channelUsers are require"
         })
     }
-    else if (!channelObj.channelName || !channelObj.channelUsers || !channelObj.userID  || !channelObj.name ||!channelObj.email ){
+    else if (!channelObj.channelName || !channelObj.channelUsers  ){
         return res.status(403).send({
             message: "All fields are require"
         })

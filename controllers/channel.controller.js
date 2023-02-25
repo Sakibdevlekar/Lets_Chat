@@ -4,12 +4,13 @@ const ChannelModel = require('../models/channel.model')
 
 exports.createChannel =async(req,res)=>{
     channelUsers = req.body.channelUsers;
+    console.log(">>>..body",req.body)
     const channelObj = {
         channelName : req.body.channelName,
         channelUsers : req.body.channelUsers,     //creating channel with users
         userID:channelUsers.userID,
         name:channelUsers.name,
-        email:channelUsers.email,
+        email:channelUsers.email
     }
     console.log(">>>>>>>>>",channelUsers)
     try {

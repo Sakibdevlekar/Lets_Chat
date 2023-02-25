@@ -5,6 +5,6 @@ const validator = require('../middleware/validator')
 const Authentication =  require('../middleware/auth_jwt')
 
 
-routes.post('/Lets_chat/v1/channel',[ Authentication.verifyToken], channelController.createChannel)
+routes.post('/Lets_chat/v1/channel',[ Authentication.verifyToken,validator.validateChannel], channelController.createChannel)
 
 module.exports = {ChannelRoutes : routes}
